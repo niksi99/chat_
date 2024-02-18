@@ -14,11 +14,10 @@ MongoDB_Connection();
 
 const authRoute = require("./server/routes/AuthRoute");
 const chatRoute = require("./server/routes/ChatRoute")
-const messageRoute = require("./server/routes/MessageRoute")
 
 app.use("/auth", authRoute);
 app.use("/chat", chatRoute);
-app.use("/message", messageRoute);
+
 
 app.listen(PORT, () => {
     console.log("http://localhost:" + PORT)
