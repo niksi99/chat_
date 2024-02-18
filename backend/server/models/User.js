@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken')
 
 const UserSchema = new mongoose.Schema({
     FullName: {
@@ -30,5 +32,34 @@ const UserSchema = new mongoose.Schema({
         default: ""
     }
 }, {timestamps: true})
+
+UserSchema.pre("save", async function(next) {
+    if(!this.isModified('Password'))
+        next();
+
+    this.Password = await bcrypt.hash(this.Password, 10)
+})
+
+UserSchema.methods.ComparePasswords_HashedNotHashed = async function(lozinka) {
+    if(lozinka === "")
+        return "Prazno polje lozinke"
+
+    return await bcrypt.compare(lozinka, this.Password)
+}
+
+UserSchema.methods.GenerateJWT = function(res) {
+    const token = jwt.sign(
+        {id: this._id, email: this.Email},
+        process.env.JWT_SECRET,
+        { expiresIn: 900 }
+    )
+
+    res.cookie("token", token, {
+        maxAge: 900 * 1000,
+        httpOnly: true
+    })
+
+    return token;
+}
 
 module.exports = mongoose.model("User", UserSchema)
