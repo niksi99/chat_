@@ -8,6 +8,7 @@ const Sidebar = () => {
     <div className="sidebarDIV">
       <SearchBar/>
       <UsersToChat/>
+      <button>Logout</button>
     </div>
   )
 }
