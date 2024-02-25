@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const jwt = require("jsonwebtoken")
 
 module.exports.Register = async(req, res, next) => {
 
@@ -101,5 +102,20 @@ module.exports.Logout = async(req, res, next) => {
             success: false,
             message: error.message
         })
+    }
+}
+
+module.exports.IsLoggedIn = async (req, res) => {
+    try {
+        const { token } = req.cookies
+        if(!token)
+            return res.json(false)
+
+        jwt.verify(token, process.env.JWT_SECRET);
+
+        res.send(true)
+    } catch (error) {
+        console.log(error)
+        return res.json(false)
     }
 }
