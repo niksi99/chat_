@@ -3,32 +3,29 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { useCookies } from 'react-cookie'
 
-const Login = () => {
+function Login () {
 
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
  
   const navigate = useNavigate()
-  // eslint-disable-next-line no-unused-vars
-  const [_, setCookie] = useCookies(["token"])
 
-  const handleLogin_ByCookie = async(event) => {
+  async function handleLogin_ByBackendCookie(event) {
     event.preventDefault();
 
     const data = { Email, Password }
     await axios.post("http://localhost:7439/auth/login", data)
       .then((res) => {
         console.log(res)
-        setCookie("token", res.data.token);
+        //setCookie("token", res.data.token);
         navigate("/welcome")
       })
       .catch((err) => console.log(err))
   }
   return (
     <div>
-      <form onSubmit={handleLogin_ByCookie}>
+      <form onSubmit={handleLogin_ByBackendCookie}>
         <div>
             <label htmlFor="inputEmail">Email: </label>
             <input id="inputEmail" type="text" 
