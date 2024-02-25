@@ -20,10 +20,10 @@ const Register = () => {
     setInputs({...inputs, Gender})
   }
 
-  const registration = (event) => {
+  const registration = async (event) => {
     event.preventDefault();
     console.log(inputs)
-    axios.post("http://localhost:7439/auth/register", inputs)
+    await axios.post("http://localhost:7439/auth/register", inputs)
          .then((res) => {
             console.log(res)
             navigate("/login")
