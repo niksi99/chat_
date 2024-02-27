@@ -6,16 +6,17 @@ import Conversation from "./Conversation"
 
 const UsersToChat = () => {
   const   conversations   = useGetChat();
+  //
   console.log(conversations)
   return (
     <div>
-         <div className="usersTochat">
-          {conversations.map(conversation => {
-            <Conversation key={conversation._id} 
-                          conversation={conversation}
-            /> 
-          })}
-        </div>
+         {
+          conversations.map(conversation => {
+            <div key={conversation._id}>
+              O
+            </div>
+          })
+         }
     </div>
   )
 }

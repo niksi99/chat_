@@ -9,7 +9,7 @@ const useGetChat = () => {
         const getConversations = async () => {
             try {
                 const res = await axios.get("http://localhost:7439/user/all-users")
-                console.log(res.data.allUsersExceptMyself)
+                console.log(res.data)
                 setConversations(res.data.allUsersExceptMyself);
             } catch (error) {
                 console.log(error)

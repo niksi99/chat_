@@ -8,7 +8,7 @@ function AuthContextProvider(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(undefined);
 
     async function checkIsLoggedIn() {
-        const logged = await axios("http://localhost:7439/auth/is_logged_in");
+        const logged = await axios.get("http://localhost:7439/auth/is_logged_in");
         setIsLoggedIn(logged.data);
     }
 
