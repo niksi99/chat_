@@ -1,13 +1,14 @@
+/* eslint-disable no-unused-vars */
 //mport React from 'react'
 
-const Conversation = () => {
+const Conversation = ({conversation}) => {
   return (
-    <div>
-        <div>
-            <label htmlFor="">IME: </label> <br/>
-            <label htmlFor="">Slika: </label> <br/> <br/>
-        </div>
-    </div>
+      <div className="conv">
+        <p>JOfwne</p>
+        <p>{conversation.FullName}</p>
+        {/* <p>{conversation.FullName}</p>
+        <img src={conversation.FrofileImg}/> */}
+      </div>
   )
 }
 

@@ -17,7 +17,7 @@ function App() {
         <Router>
           <Navbar/>
           <Routes>
-          <Route exact path='/' element={<HomePage/>}></Route>
+           <Route exact path='/' element={<HomePage/>}></Route>
             {
               isLoggedIn === false && (
                 <>
