@@ -14,7 +14,7 @@ app.use(cookieParser());
 const PORT = process.env.PORT || 1111;
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST", "PUT", "DELETE"],
     //allowedHeaders: ['*'],
     credentials: true
