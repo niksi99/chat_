@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Message() {
+function Message({message}) {
   return (
     <div>
-      <p>Message</p>
+      <p>{message.Message}</p>
     </div>
   )
 }

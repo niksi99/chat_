@@ -40,8 +40,8 @@ module.exports.SendMessage = async (req, res, next) => {
         
         conversation.Messages.push(newMessage._id)
     
-        await newMessage.save()
-        await conversation.save()
+        await Promise.all([conversation.save(), newMessage.save()]);
+
         res.json({
             success: true,
             newMessage

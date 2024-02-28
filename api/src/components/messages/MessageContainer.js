@@ -21,7 +21,7 @@ function MessageContainer() {
             (<span>{selectedConversation.FullName}</span>) :
             (<></>)
         }
-        {console.log(selectedConversation)}
+    
       </div>
         {
             !selectedConversation ? 
