@@ -14,7 +14,7 @@ function MessageInput() {
       await axios.post(`http://localhost:7439/chat/send/${selectedConversation._id}`, {message: Message})
                  .then((res) => {
                   console.log(res)
-                  setMessages({...messages, Message})
+                  setMessages([...messages, Message])
                  })
                  .catch((err) => console.log(err))
                  setSendMessage("");
